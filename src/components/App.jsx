@@ -16,14 +16,14 @@ export const App = () => {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
   useEffect(() => {
-    const contacts = localStorage.getItem('contacts');
-    if (contacts) {
-      setContacts(JSON.parse(contacts));
+    const acontacts = localStorage.getItem('contacts');
+    console.log(acontacts);
+    if (acontacts) {
+      setContacts(JSON.parse(acontacts));
     }
   }, []);
   useEffect(() => {
-    contacts.length &&
-      localStorage.setItem('contacts', JSON.stringify(contacts));
+    localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
   const handleCreate = e => {
     e.preventDefault();
@@ -51,12 +51,7 @@ export const App = () => {
     if (name === 'number') setNumber(value);
   };
   const deleteContact = ({ target }) => {
-    const index = contacts.findIndex(contact => contact.id === target.id);
-    console.log(index);
-    contacts.splice(index, 1);
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-    setContacts(contacts);
-    console.log(contacts);
+    setContacts(contacts.filter(contact => contact.id !== target.id));
   };
 
   return (
