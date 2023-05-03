@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const ContactForm = ({ onChange, onAddContact }) => {
+export const ContactForm = ({ name, number, onChange, onAddContact }) => {
   return (
     <>
       <form onSubmit={onAddContact}>
@@ -12,6 +12,7 @@ export const ContactForm = ({ onChange, onAddContact }) => {
             id="inputName"
             type="text"
             name="name"
+            value={name}
             onChange={onChange}
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -26,6 +27,7 @@ export const ContactForm = ({ onChange, onAddContact }) => {
             id="inputNumber"
             type="tel"
             name="number"
+            value={number}
             onChange={onChange}
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
@@ -41,6 +43,8 @@ export const ContactForm = ({ onChange, onAddContact }) => {
 };
 
 ContactForm.propTypes = {
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onAddContact: PropTypes.func.isRequired,
 };
