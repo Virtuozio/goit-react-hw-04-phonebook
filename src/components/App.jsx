@@ -16,7 +16,7 @@ export const App = () => {
   const [contacts, setContacts] = useState([]);
   useEffect(() => {
     const contacts = JSON.parse(localStorage.getItem('contacts'));
-    if (contacts.length) {
+    if (contacts && contacts.length) {
       setContacts(contacts);
     }
   }, []);
